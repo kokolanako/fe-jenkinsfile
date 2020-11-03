@@ -1,7 +1,7 @@
 pipeline {
   agent any
   triggers {
-    githubPush()
+    githubPush()//for DSL
   }
   // tools{
   //   nodejs "node"
@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Cloning Git'){
       steps{
-        git branch 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
+        git branch: 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
       }
     }
     // stage('Install dependencies'){
