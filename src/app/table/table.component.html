@@ -1,0 +1,64 @@
+<!-- The panel as content of the tab view for all series -->
+<p-tabView [activeIndex]="selectedSeriesIdx" (onChange)="tabChanged($event);">
+  <p-tabPanel
+  *ngFor="let series of data; let i = index"
+  [header]="series.country"
+  tooltip="{{ series.country }}"
+  [(selected)]="i === selectedSeriesIdx"
+  >
+</p-tabPanel>
+</p-tabView>
+    <p-table
+    *ngIf="visible"
+    id='dt'
+      #dt
+      [columns]="cols"
+      [value]="viewData"
+      [scrollable]="true"
+      [rows]="50"
+      [first]="50"
+      scrollHeight="250px"
+      [virtualScroll]="true"
+      [virtualRowHeight]="34"
+      [lazy]="true"
+      (onLazyLoad)="loadCarsLazy($event)"
+      [totalRecords]="data[selectedSeriesIdx].data.length"
+    >
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.header }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+        <tr style="height: 27px"
+        [id]="'body'+selectedSeriesIdx+ '-' + index"
+        [pSelectableRow]="rowData"
+            [pSelectableRowIndex]="index">
+          <td *ngFor="let col of cols" [ngSwitch]="col.field">
+            <ng-container *ngSwitchCase="'timestamp'">
+              {{ rowData.timestamp | date: "dd.MM.yyyy HH:mm":"+0000" }}
+            </ng-container>
+            <ng-container *ngSwitchCase="'value'">
+              {{ rowData.value | number: "1.2-3" }}
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="loadingbody" let-columns="columns">
+        <tr style="height: 34px">
+          <td *ngFor="let col of columns">
+            <div class="loading-text"></div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+<!-- <p-tabView  >  
+  <p-tabPanel [selected]="i==0" *ngFor="let lead of data; let i = index" [header]="lead.country"  >
+    <div>
+      {{lead.contry}}
+    </div>
+   </p-tabPanel>
+</p-tabView>  -->

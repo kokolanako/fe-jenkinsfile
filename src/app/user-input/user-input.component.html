@@ -1,0 +1,44 @@
+<div class="p-grid">
+  <div class="p-col-1"></div>
+  <div class="p-col-2">
+    <h3>Country:</h3>
+    <p-multiSelect
+      [options]="countries"
+      [(ngModel)]="selectedCountries"
+      placeholder="Select Countries"
+    >
+    </p-multiSelect>
+
+    <h3>Sector:</h3>
+    <p-dropdown
+      [options]="sectors"
+      [(ngModel)]="selectedSector"
+      placeholder="Select a Sector"
+    >
+    </p-dropdown>
+
+    <h3>Year:</h3>
+    <p-dropdown
+      [options]="years"
+      [(ngModel)]="selectedYear"
+      placeholder="Select a Year"
+    >
+    </p-dropdown>
+    <div class="p-col-4"></div>
+    <div>
+      <button
+        pButton
+        type="button"
+        class="p-button-rounded"
+        label="Show Data"
+        (click)="showGraph()"
+        
+      ></button>
+    </div>
+  </div>
+
+    <div *ngIf="loaded" class="p-col-7" >
+      <app-display-data [title]="this.title"></app-display-data>
+      <app-table></app-table>
+    </div>
+</div>
