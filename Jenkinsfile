@@ -27,11 +27,11 @@ pipeline {
       steps{
         git branch: 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
       }
-      stage('Build'){
+      }
+      stage('Build'){ 
         steps{
           sh 'npm install'
         }
-      }
     }
    
   }
