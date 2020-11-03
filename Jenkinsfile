@@ -14,11 +14,11 @@ pipeline {
       echo 'HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
       }
     }
-    // stage('Cloning Git'){
-    //   steps{
-    //     git branch 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
-    //   }
-    // }
+    stage('Cloning Git'){
+      steps{
+        git branch 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
+      }
+    }
     // stage('Install dependencies'){
     //   sh 'npm install'
     // }
