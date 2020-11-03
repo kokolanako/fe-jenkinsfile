@@ -5,9 +5,9 @@ pipeline {
       image 'node:12.19-alpine'
       args '-p 3000:3000'
     }
+  }
     environment{
       CI ='true'
-    }
   }
   // triggers {
   //   githubPush() //for DSL
