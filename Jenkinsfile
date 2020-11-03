@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Cloning Git'){
       steps{
-        git 'https://github.com/kokolanako/fe-jenkinsfile.git'
+        git branch 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
       }
     }
     stage('Install dependencies'){
