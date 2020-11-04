@@ -18,20 +18,15 @@ pipeline {
   // }
  
   stages {
-    stage('Hello'){
-      steps{
-
-      echo 'HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
-      }
-    }
-    stage('Cloning Git'){
+   
+    stage('Cloning Git Frontend'){
       steps{
         git branch: 'master', url: 'https://github.com/kokolanako/fe-jenkinsfile.git'
       }
       }
       stage('Build'){ 
         steps{
-          sh 'npm install'
+          sh 'npm run build'
         }
     }
    
