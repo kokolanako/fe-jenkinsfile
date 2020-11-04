@@ -1,11 +1,12 @@
 pipeline {
-  agent {
+  agent any
+  // {
 
-    docker{
-      image 'node:12.19-alpine'
-      args '-p 3000:3000'
-    }
-  }
+  //   docker{
+  //     image 'node:12.19-alpine'
+  //     args '-p 3000:3000'
+  //   }
+  // }
     environment{
       CI ='true'
   }
