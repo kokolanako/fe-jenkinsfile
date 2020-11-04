@@ -29,20 +29,17 @@ pipeline {
           
           sh 'npm run build'
         }
-        stage('Create docker image'){
-          agent{
-            docker{
-              image 'nginx:1.15.8-alpine'
-
-            }
+      }
+      stage('Create docker image'){
+        agent{
+          docker{
+            image 'nginx:1.15.8-alpine'
           }
+        }
           steps{
-
             sh 'cd /var/jenkins_home/workspace/fe-1/dist/energy-consumption-ui/'
             sh 'docker -t ui-image .'
           }
-        }
-    }
-   
+      }
   }
 }
